@@ -4,6 +4,10 @@
 
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule .*[^/]$ $0/ [L,R=307]
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule .*[^/]$ $0/ [L,R=301]
 
     # Checks to see if the user is attempting to access a valid file,

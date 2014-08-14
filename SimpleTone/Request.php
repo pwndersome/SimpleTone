@@ -20,7 +20,7 @@ class Request
 	}
 
 
-	public static function make($segments = array(), $method = 'get')
+	public static function make($segments = array())
 	{
 		if(empty($segments))
 			$segments	= self::segments();
@@ -29,7 +29,7 @@ class Request
 
 		# set request info
 		$request->segments	= $segments;
-		$request->method	= strtolower($method);
+		$request->method	= self::method();
 
 		return $request;
 	}
