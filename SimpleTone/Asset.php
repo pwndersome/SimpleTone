@@ -14,7 +14,7 @@ namespace SimpleTone;
 */
 class Asset
 {
-	public static function load($module_path, $resource, $namespaced = false)
+	public static function load($module_path, $resource, $namespaced = true)
 	{
 		# asset path
 		$asset_path		= dirname($module_path).'/'.$resource.'.php';
@@ -46,13 +46,13 @@ class Asset
 	{
 		# trim extension
 		$namespace				= str_replace('.php', '', $filepath);
-		
+
 		# ensure all paths are with forward slash
 		$namespace				= str_replace('\\', '/', $namespace);
 
 		$modules_path			= Config::get('modules_path');
 		$modules_namespace		= Config::get('modules.namespace');
-		
+
 		# get modules namespace
 		$namespace				= str_replace($modules_path, $modules_namespace.'\\', $namespace);
 

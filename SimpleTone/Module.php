@@ -111,6 +111,9 @@ class Module
 		if(method_exists($module, '__remap'))
 			$module->__remap();
 
+		if(method_exists($module, 'init'))
+			$module->init();
+
 		if(method_exists($module, $action))
 		{
 			switch(count($params))
@@ -123,6 +126,8 @@ class Module
 				default: return call_user_func_array(array($module, $action), $params);  break;
 			}
 		}
+		else
+			trigger_error('Method '.$action.' does not exist in module '.$namespace);
 
 		return false;
 	}
@@ -152,7 +157,7 @@ class Module
 	{
 		# trim extension
 		$namespace				= str_replace('.php', '', $filepath);
-		
+
 		# ensure all paths are with forward slash
 		$namespace				= str_replace('\\', '/', $namespace);
 

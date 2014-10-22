@@ -55,6 +55,9 @@ class Router
 					if(method_exists($module, '__remap'))
 						$module->__remap();
 
+					if(method_exists($module, 'init'))
+						$module->init();
+
 					# restful routing for actions
 					if($is_restful)
 					{

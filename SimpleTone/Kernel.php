@@ -189,5 +189,7 @@ class Kernel
 		# require path if exists, else it may be autoloaded via another autoloader
 		if(file_exists($filepath))
 			require $filepath;
+		else
+			trigger_error("File '".$filepath."' does not exist");
 	}
 }

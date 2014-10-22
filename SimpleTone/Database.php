@@ -2,6 +2,8 @@
 
 namespace SimpleTone;
 
+use \PDO as PDO;
+
 class Database
 {
 	protected static $instance					= null;
@@ -352,6 +354,14 @@ class Database
 			return @array_shift($row);
 
 		return $row;
+	}
+
+
+	public function lastInsertId()
+	{
+		$lastConnectionName	= $this->lastConnection['name'];
+
+		return $this->connections[$lastConnectionName]->lastInsertId();
 	}
 
 
